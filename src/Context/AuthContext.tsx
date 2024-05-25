@@ -1,11 +1,24 @@
-// import {createContext} from 'react';
+import { SignUpAndLoginFunction, AuthProviderProps } from '../types/ContextType';
+import { useAuth } from '../hooks/useAuth';
+import { createContext, useContext} from "react";
 
-// const context = createContext();
+export const contextAuth = createContext<SignUpAndLoginFunction | undefined>(
+    undefined
+);
 
-// function AuthProvider(){
-//     return(
-//         <context.Provider>
+export const useAuthContext = () => {
+    const context = useContext(contextAuth);
+    if (!context) throw new Error("There is not auth provider");
+    return context;
+};
 
-//         </context.Provider>
-//     )
-// }
+export default function AuthProvider({ children }: AuthProviderProps) {
+    const {loading, logOut, loginWhitGoogle, login, singUp, user } = useAuth();
+    return (
+        <contextAuth.Provider value={{ loading ,singUp, login, user, logOut, loginWhitGoogle }}>
+            {children}
+        </contextAuth.Provider>
+    )
+}
+
+

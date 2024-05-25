@@ -1,12 +1,19 @@
-import React from "react";
+
 import LinkForm from "./LinkForm";
 import { useCrudFireBase } from "../hooks/useCrud";
+import Toast from "./common/Toast";
+
 const Links = () => {
-    const {addOrEditLink,success}=useCrudFireBase();
+    const { addOrEditLink, success } = useCrudFireBase();
     
-    return(
+
+    return (
         <>
+        
             <LinkForm addOrEditLink={addOrEditLink}></LinkForm>
+            {success && (
+                <Toast></Toast>
+            )}
         </>
     );
 

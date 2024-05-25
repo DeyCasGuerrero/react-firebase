@@ -1,3 +1,5 @@
+import { SVGProps } from "react";
+
 export interface InputProps{
     label: string;
     type: string;
@@ -15,5 +17,9 @@ export interface TextAreaProps{
     row : number;
     placeholder:string;
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
 
+export interface SvgIconsProps extends SVGProps<SVGSVGElement> {
+    size?: number;
+    color?: string;
 }
