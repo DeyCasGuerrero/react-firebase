@@ -1,6 +1,6 @@
 import { InputProps } from "../../types/TypesProps";
 
-const Inputs: React.FC<InputProps> = ({ bgColor, label, name, onChange, placeholder, type }) => {
+const Inputs: React.FC<InputProps> = ({ bgColor, label, name, onChange, placeholder, type ,value}) => {
 
     const inputAttributes = {
         bgColor: bgColor || 'bg-black',
@@ -8,7 +8,8 @@ const Inputs: React.FC<InputProps> = ({ bgColor, label, name, onChange, placehol
         name: name,
         onChange: onChange,
         placeholder: placeholder,
-        type: type || 'text'
+        type: type || 'text',
+        value:value,
     };
 
     return (
@@ -22,7 +23,8 @@ const Inputs: React.FC<InputProps> = ({ bgColor, label, name, onChange, placehol
                     name={inputAttributes.name}
                     placeholder={inputAttributes.placeholder}
                     onChange={inputAttributes.onChange}
-                    className="w-full rounded-md p-1 py-1.5 px-2 ring-inset ring-gray-400 focus:text-gray-800 focus:outline-none focus:ring-0"
+                    value={inputAttributes.value}
+                    className="w-full rounded-md p-1 py-1.5 px-2 font-pixel text-lg ring-inset ring-gray-400 focus:text-gray-800 focus:outline-none focus:ring-0"
                 />
             </div>
         </div>

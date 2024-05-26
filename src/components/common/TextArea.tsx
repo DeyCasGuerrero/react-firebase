@@ -1,6 +1,6 @@
 import { TextAreaProps } from "../../types/TypesProps";
 
-const TextArea: React.FC<TextAreaProps> = ({ label, name, bgColor, row, placeholder, onChange }) => {
+const TextArea: React.FC<TextAreaProps> = ({ label, name, bgColor, row, placeholder, onChange ,value}) => {
 
     const TxtAreaAttributes = {
         name: name,
@@ -9,6 +9,7 @@ const TextArea: React.FC<TextAreaProps> = ({ label, name, bgColor, row, placehol
         row: row,
         placeholder: placeholder,
         onChange: onChange,
+        value:value,
     }
 
     return (
@@ -22,6 +23,7 @@ const TextArea: React.FC<TextAreaProps> = ({ label, name, bgColor, row, placehol
                     name={TxtAreaAttributes.name}
                     rows={TxtAreaAttributes.row}
                     onChange={TxtAreaAttributes.onChange}
+                    value={TxtAreaAttributes.value}
 
                 >
 

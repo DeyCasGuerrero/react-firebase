@@ -7,6 +7,7 @@ export interface InputProps{
     bgColor?:string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
+    value: string;
 
 }
 
@@ -17,6 +18,7 @@ export interface TextAreaProps{
     row : number;
     placeholder:string;
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    value: string;
 }
 
 export interface SvgIconsProps extends SVGProps<SVGSVGElement> {

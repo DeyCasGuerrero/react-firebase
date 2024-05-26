@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import { LinkTypes } from "../types/LinkTypes";
 export function useGetValues (addOrEdit: (values: LinkTypes) => void){
 
@@ -18,12 +18,13 @@ export function useGetValues (addOrEdit: (values: LinkTypes) => void){
 
     const handleSumit = (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
-        console.log(values)
         addOrEdit(values);
+        setValues({...initialStateValues});
     }
 
     return{
         handleSumit,
         handleInputChange,
+        values,
     }
 }

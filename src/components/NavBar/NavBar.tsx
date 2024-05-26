@@ -4,16 +4,12 @@ const NavBar = () => {
 
     const { user, logOut, loading } = useAuthContext();
 
-    console.log(user)
-
     const handleLogout = async () => {
-
         try {
             await logOut();
         } catch (error) {
 
         }
-
     }
 
     if (loading) {
