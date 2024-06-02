@@ -1,6 +1,8 @@
 export interface LinkTypes {
-    id?:string;
+    id?:string | null;
     url: string;
     name: string;
     description: string;
+    urlImagen?:string;
 }
+

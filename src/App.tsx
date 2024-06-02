@@ -13,6 +13,7 @@ function App() {
       <main className="flex min-h-screen overflow-hidden flex-col items-center justify-center p-8" style={{ background: `url(${background[0]}) 0% 0%`, imageRendering: 'pixelated', filter: 'brightness(90%)', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <Routes>
           <Route path="*" element={<NotFound></NotFound>}></Route>
+          
           <Route path="/" element={
             <ProtectedRoute>
               <>
@@ -22,17 +23,17 @@ function App() {
             </ProtectedRoute>
           }>
           </Route>
+
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }>
           </Route>
-          <Route path="/login" element={
-            <ProtectedRouteSignUp/>
-          }
-          ></Route>
+
+          <Route path="/login" element={<ProtectedRouteSignUp/>}></Route>
           <Route path="/register" element={<ProtectedRoutesRegister/>}></Route>
+
         </Routes>
       </main>
     </AuthProvider>

@@ -3,16 +3,10 @@ import Inputs from "./common/Inputs";
 import TextArea from "./common/TextArea";
 import Button from "./common/Button";
 import { useGetValues } from "../hooks/useGetValues";
-import React from "react";
-import { LinkTypes } from "../types/LinkTypes";
 
-interface LinkFormProps{
-    addOrEditLink: (values: LinkTypes) => void;
-}
+const LinkForm = () => {
 
-const LinkForm:React.FC<LinkFormProps> = ({addOrEditLink}) => {
-
-    const { handleSumit, handleInputChange,values} = useGetValues(addOrEditLink);
+    const { handleSumit, handleInputChange, values, handleFileChange, file } = useGetValues();
     return (
         <div className="flex flex-col items-center w-full gap-16">
             <h1 className="text-white text-6xl text-center font-pixel">Agrega tus redes</h1>
@@ -35,6 +29,22 @@ const LinkForm:React.FC<LinkFormProps> = ({addOrEditLink}) => {
                     value={values.name}
                 />
 
+                <Inputs
+                    label="Coloca tu imagen"
+                    name="urlImagen"
+                    type="file"
+                    onChange={handleFileChange}
+                />
+
+                <div className="p-4 bg-black mt-2 rounded-lg flex items-center text-center justify-center border-4 border-white">
+                    {file ? (
+                        <p className="text-3xl font-pixel text-emerald-600"> YA TIENES LA IMAGEN </p>
+
+                    ) : (
+                        <p className="text-3xl font-pixel text-red-600"> AÚN NO HAY UNA IMAGEN </p>
+                    )}
+                </div>
+
                 <TextArea
                     label="Añade una descripción"
                     name="description"
@@ -43,7 +53,7 @@ const LinkForm:React.FC<LinkFormProps> = ({addOrEditLink}) => {
                     onChange={handleInputChange}
                     value={values.description}
                 />
-                <Button/>
+                <Button />
             </form>
         </div>
     );

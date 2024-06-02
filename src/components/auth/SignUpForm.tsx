@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuthContext } from '../../Context/AuthContext';
 import { Auth } from '../../types/FormTypes';
 import { useState } from 'react';
@@ -114,7 +114,7 @@ const SignUpForm = () => {
                 </div>
                 <div className="text-sm text-center mt-[1.6rem] ">
                     <p className="text-black">Dont have an account yet? </p>
-                    {/* <Link href="register" className="text-sm text-[#7747ff]" >Sign up for free!</Link> */}
+                    <Link to="/register" className="text-sm text-[#7747ff]" >Sign up for free!</Link> 
                 </div>
             </div>
         </div>

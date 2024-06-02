@@ -13,6 +13,6 @@ export type InputLoginRegisterProps = {
     icon?: JSX.Element;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
-export type handleChangeType = (e: ChangeEvent<HTMLInputElement>) => void;
-export type handleSubmitType = (e: FormEvent<HTMLFormElement>) => void;
-export type handleDeleteType = () => void
+// export type handleChangeType = (e: ChangeEvent<HTMLInputElement>) => void;
+// export type handleSubmitType = (e: FormEvent<HTMLFormElement>) => void;
+// export type handleDeleteType = () => void

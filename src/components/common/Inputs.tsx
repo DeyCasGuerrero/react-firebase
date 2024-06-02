@@ -1,4 +1,6 @@
 import { InputProps } from "../../types/TypesProps";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 const Inputs: React.FC<InputProps> = ({ bgColor, label, name, onChange, placeholder, type ,value}) => {
 
@@ -16,6 +18,7 @@ const Inputs: React.FC<InputProps> = ({ bgColor, label, name, onChange, placehol
         <div className={`${inputAttributes.bgColor} p-4 rounded-xl mt-4`}>
             <div>
                 <label className="text-white font-pixel text-2xl">{inputAttributes.label}</label>
+                <FontAwesomeIcon icon={faLink} height={50} width={50} color="#fff"/>
             </div>
             <div className="mt-2">
                 <input

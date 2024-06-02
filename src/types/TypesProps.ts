@@ -5,9 +5,9 @@ export interface InputProps{
     type: string;
     name:string;
     bgColor?:string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    placeholder: string;
-    value: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
+    value?: string;
 
 }
 

@@ -24,7 +24,12 @@ const NavBar = () => {
                     <h1 className='text-green-500'>{user?.displayName || user?.email}</h1>
                 </div>
                 <Link to={'/profile'}>
-                    <img className='rounded-full w-20 h-20' src={user && user.photoURL ? user.photoURL : undefined} alt='perfil'></img>
+                    {user?.photoURL ? (
+                        <img className='rounded-full w-20 h-20' src={user && user.photoURL ? user.photoURL : undefined} alt='perfil'></img>
+                    ) : (
+                        <p>No foto</p>
+                    )}
+
                 </Link>
             </div>
 

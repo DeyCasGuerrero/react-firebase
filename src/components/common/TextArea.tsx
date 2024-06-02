@@ -13,8 +13,8 @@ const TextArea: React.FC<TextAreaProps> = ({ label, name, bgColor, row, placehol
     }
 
     return (
-        <div className=" bg-black flex flex-col items-center w-full justify-center mt-4 p-4 rounded-md">
-            <label className="font-pixel text-white text-2xl">{TxtAreaAttributes.label}</label>
+        <div className=" bg-black flex flex-col items-center w-full justify-center mt-4 p-4 rounded-md font-pixel">
+            <label className="text-white text-2xl">{TxtAreaAttributes.label}</label>
             <div className="w-full max-w-md p-4 ">
                 <textarea
                     className="w-full h-32 bg-transparent text-white placeholder-gray-400 border border-gray-400
