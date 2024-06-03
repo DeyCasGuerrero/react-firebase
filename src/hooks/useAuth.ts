@@ -9,8 +9,6 @@ import {LogOutFunction, SignUpAndLoginFunction} from "../types/ContextType";
 
 import { auth as authFirebase } from "../firebase/config";
 
-
-
 export function useAuth() {
 
     const [user, setUser] = useState<User | null>(null);

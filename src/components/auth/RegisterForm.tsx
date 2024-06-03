@@ -2,6 +2,7 @@ import { useState } from "react";
 import {useAuthContext} from '../../Context/AuthContext';
 import { Auth } from "../../types/FormTypes";
 import {useNavigate} from 'react-router-dom'
+
 const RegisterForm = () => {
     const [repeatPassword, setRepeatPassword] = useState<string>('');
     const [userData, setUserData] = useState<Auth>({
@@ -28,7 +29,6 @@ const RegisterForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-
         if (!userData.email || !userData.password || !repeatPassword) {
             alert('Por favor, complete todos los campos del formulario.');
             return;
@@ -40,11 +40,12 @@ const RegisterForm = () => {
         }
 
         try {
-            await singUp(userData)
+            await singUp(userData);
             navigate("/login");
         } catch (error) {
             console.error('Error al registrar al usuario:', error);
             alert('Hubo un error al registrar al usuario. Por favor, inténtalo de nuevo más tarde.');
+            
         }
     };
 

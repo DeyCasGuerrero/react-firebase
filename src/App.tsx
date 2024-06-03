@@ -1,11 +1,12 @@
-import Links from "./components/Links";
+import Links from "./components/pages/Links";
 import { background } from "./utils/defaultBg";
 import { Routes, Route } from 'react-router-dom';
 import AuthProvider from "./Context/AuthContext";
 import NavBar from "./components/NavBar/NavBar";
-import ProtectedRoute, {ProtectedRouteSignUp, ProtectedRoutesRegister} from "./components/protectedRoutes/ProtectedRoutes";
-import Profile from "./components/profile";
-import NotFound from "./components/NotFound";
+import ProtectedRoute, { ProtectedRoutesRegister, ProtectedRouteSignUp} from "./components/protectedRoutes/ProtectedRoutes";
+import Profile from "./components/pages/profile";
+import NotFound from "./components/pages/NotFound";
+import PageUser from "./components/pages/PageUser";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
             </ProtectedRoute>
           }>
           </Route>
+
+          <Route path="/pageuser/:uidUser" element={<PageUser/>}></Route>
 
           <Route path="/login" element={<ProtectedRouteSignUp/>}></Route>
           <Route path="/register" element={<ProtectedRoutesRegister/>}></Route>

@@ -16,4 +16,4 @@ export type SignUpAndLoginFunction = {
 export type AuthProviderProps = {
     children: ReactNode;
 };
-export type UserFirebaseOrNull = FirebaseUser | null;
+// export type UserFirebaseOrNull = FirebaseUser | null;

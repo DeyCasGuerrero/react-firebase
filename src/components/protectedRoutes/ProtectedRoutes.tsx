@@ -2,9 +2,9 @@ import { useAuthContext } from '../../Context/AuthContext'
 import { Navigate } from 'react-router-dom';
 import SignUpForm from '../auth/SignUpForm';
 import RegisterForm from '../auth/RegisterForm';
+import LoaderComponent from '../pages/loader/Loader';
 
 interface ProtectedRouteProps {
-    // isAuthenticated: boolean;
     children: React.ReactNode;
 }
 
@@ -13,11 +13,11 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     const { user, loading } = useAuthContext();
 
     if (loading) {
-        return <div className="text-5xl text-white">Loading...</div>;
+        return <LoaderComponent/>;
     }
 
     if (!user) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to="/login"/>;
     }
 
     return <>{children}</>;
@@ -27,7 +27,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 export  function ProtectedRouteSignUp(){
     const {user, loading} = useAuthContext();
 
-    if(loading) return <h1>Loading ...</h1>
+    if(loading) return <LoaderComponent/>;
 
     if(user) return <Navigate to="/"/>
     
@@ -39,10 +39,10 @@ export  function ProtectedRouteSignUp(){
 export function ProtectedRoutesRegister(){
     const {user,loading }=useAuthContext(); 
 
-    if(loading) return <h1>Loading</h1>
+    if(loading) return <LoaderComponent/>;
 
-    if(user) return <Navigate to="/"/>
+    if(user) return <Navigate to="/"/>;
 
-    return <RegisterForm/>
+    return <RegisterForm/>;
 
 }

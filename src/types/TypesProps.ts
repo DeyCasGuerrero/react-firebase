@@ -25,3 +25,11 @@ export interface SvgIconsProps extends SVGProps<SVGSVGElement> {
     size?: number;
     color?: string;
 }
+
+
+export interface ButtonProps{
+    text:string;
+    bgColor?:string;
+    color?:string;
+    onClick?: () => void;
+}

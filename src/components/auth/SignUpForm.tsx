@@ -86,6 +86,7 @@ const SignUpForm = () => {
                                     name="password"
                                     className="flex text-black h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm "
                                     onChange={handleChange}
+                                    
                                 />
                             </div>
                         </div>
