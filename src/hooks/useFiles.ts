@@ -7,7 +7,7 @@ export function useFiles() {
 
     const { user } = useAuthContext();
 
-    const nameUser = user?.displayName;
+    const nameUser = user?.displayName || user?.email;
 
     async function uploadFile(file: File): Promise<string> {
         if (user) {

@@ -15,11 +15,14 @@ export function useAuth() {
 
     const [loading, setLoading] = useState<SignUpAndLoginFunction["loading"]>(true);
 
-    const singUp: SignUpAndLoginFunction["singUp"] = async (auth) => {
+
+    const signUp: SignUpAndLoginFunction["signUp"] = async (auth) => {
         const { email, password } = auth;
         try {
             await createUserWithEmailAndPassword(authFirebase, email, password);
+      
         } catch (error: any) {
+     
             throw new Error(error.message || "Error desconocido");
         }
     };
@@ -49,7 +52,7 @@ export function useAuth() {
 
     useEffect(() => {
 
-        const unsubcribe = onAuthStateChanged(authFirebase, CurretUser =>{
+        const unsubcribe = onAuthStateChanged(authFirebase, (CurretUser) =>{
             setUser(CurretUser);
             setLoading(false);
         })
@@ -61,7 +64,7 @@ export function useAuth() {
     return {
         user,
         loading,
-        singUp,
+        signUp,
         login,
         loginWhitGoogle,
         logOut,

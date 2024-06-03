@@ -1,10 +1,11 @@
 
 import { LinkTypes } from '../types/LinkTypes';
 import { db } from '../firebase/config';
-import { collection, doc, addDoc, onSnapshot, deleteDoc, getDocs } from "firebase/firestore";
+import { collection, doc, addDoc, onSnapshot, deleteDoc, getDocs, getDoc } from "firebase/firestore";
 import { useState, useEffect } from 'react';
 import { useAuthContext } from '../Context/AuthContext';
-
+import { storage } from '../firebase/config';
+import { ref, deleteObject } from "firebase/storage";
 
 export function useCrudFireBase() {
 
@@ -20,6 +21,7 @@ export function useCrudFireBase() {
             const userLinksCollection = collection(db, 'users', user.uid, 'links');
             const docRef = await addDoc(userLinksCollection, values);
             setSuccess(true);
+
             return docRef.id;
         } catch (error) {
             console.log('Error al escribir en el doc', error);
@@ -84,8 +86,30 @@ export function useCrudFireBase() {
                 if (!user) {
                     throw new Error('Usuario no autenticado');
                 }
+
+                //Obtenemos el doc, osea el objeto de la base de datos
+
                 const linkDocRef = doc(db, 'users', user.uid, 'links', id);
-                await deleteDoc(linkDocRef);
+                const linkDoc = await getDoc(linkDocRef);
+                
+                if (linkDoc.exists()) {
+
+                    // Obtenemos la referencia del archivo
+                    const linkData = linkDoc.data();
+                    const imageUrl = linkData.urlImagen; //Lo eliminamos entrando al doc.urlImagen
+
+                    // Eliminamos la imagen de Firebase Storagexd
+                    if (imageUrl) {
+                        const imageRef = ref(storage, imageUrl);
+                        await deleteObject(imageRef);
+                    }
+
+                    // Aqui se elimina el doc de la base de datos 
+                    await deleteDoc(linkDocRef);
+                } else {
+                    console.error("El documento no existe");
+                }
+
             } catch (error) {
                 console.error('Error al eliminar el link', error);
             }
@@ -105,6 +129,6 @@ export function useCrudFireBase() {
         setSuccess,
         links,
         onDeleteLink,
-        fetchLinksByUid, 
+        fetchLinksByUid,
     };
 }

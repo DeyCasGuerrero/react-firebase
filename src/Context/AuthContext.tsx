@@ -13,9 +13,9 @@ export const useAuthContext = () => {
 };
 
 export default function AuthProvider({ children }: AuthProviderProps) {
-    const {loading, logOut, loginWhitGoogle, login, singUp, user } = useAuth();
+    const {loading, logOut, loginWhitGoogle, login, signUp, user } = useAuth();
     return (
-        <contextAuth.Provider value={{ loading ,singUp, login, user, logOut, loginWhitGoogle }}>
+        <contextAuth.Provider value={{ loading ,signUp, login, user, logOut, loginWhitGoogle }}>
             {children}
         </contextAuth.Provider>
     )

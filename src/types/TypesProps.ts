@@ -26,7 +26,6 @@ export interface SvgIconsProps extends SVGProps<SVGSVGElement> {
     color?: string;
 }
 
-
 export interface ButtonProps{
     text:string;
     bgColor?:string;

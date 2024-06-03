@@ -14,12 +14,11 @@ const SocialLinks = ({ link }: { link: LinkTypes }) => {
             {user && (
                 <div className="flex justify-end gap-4">
 
-                    <div className="flex items-center bg-gre text-lg">
+                    <div className="flex items-center bg-gre text-lg cursor-pointer" onClick={() => link && onDeleteLink(link.id)}>
                         eliminar
                         <FontAwesomeIcon
                             icon={faX}
                             color="red"
-                            onClick={() => link && onDeleteLink(link.id)}
                         />
                     </div>
 

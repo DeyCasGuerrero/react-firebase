@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 
 const RegisterForm = () => {
     const [repeatPassword, setRepeatPassword] = useState<string>('');
+    const [isRegistered, setIsRegistered] = useState(false);
     const [userData, setUserData] = useState<Auth>({
         email: '',
         password: '',
@@ -12,7 +13,7 @@ const RegisterForm = () => {
 
     const navigate = useNavigate();
 
-    const {singUp} = useAuthContext();
+    const {signUp} = useAuthContext();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -40,8 +41,8 @@ const RegisterForm = () => {
         }
 
         try {
-            await singUp(userData);
-            navigate("/login");
+            await signUp(userData);
+            setIsRegistered(true); 
         } catch (error) {
             console.error('Error al registrar al usuario:', error);
             alert('Hubo un error al registrar al usuario. Por favor, inténtalo de nuevo más tarde.');
@@ -49,6 +50,10 @@ const RegisterForm = () => {
         }
     };
 
+      // Redirigir al login después del registro exitoso
+    if (isRegistered) {
+        navigate('/login');
+    }
 
 
     return (

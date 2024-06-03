@@ -44,5 +44,4 @@ export function ProtectedRoutesRegister(){
     if(user) return <Navigate to="/"/>;
 
     return <RegisterForm/>;
-
 }
