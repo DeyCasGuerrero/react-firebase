@@ -81,7 +81,7 @@ const RegisterForm = () => {
                         <label className="text-base font-medium text-gray-900">Password</label>
                         <div className="mt-2">
                             <input
-                                placeholder="Mayúsculas, números y minusculas"
+                                placeholder="contraseña mínimo de 8 caracteres"
                                 type="password"
                                 className="text-black flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                 name="password"
@@ -94,7 +94,7 @@ const RegisterForm = () => {
                         <label className="text-base font-medium text-gray-900">Repeat Password</label>
                         <div className="mt-2">
                             <input
-                                placeholder="Repeat Password"
+                                placeholder="Repetir Password"
                                 type="password"
                                 className="text-gray-900 flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                 value={repeatPassword}

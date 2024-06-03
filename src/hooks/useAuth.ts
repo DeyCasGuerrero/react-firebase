@@ -1,11 +1,12 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, 
+import {
+    createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider,
     onAuthStateChanged,
     User,
     signOut,
     signInWithPopup,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-import {LogOutFunction, SignUpAndLoginFunction} from "../types/ContextType";
+import { LogOutFunction, SignUpAndLoginFunction } from "../types/ContextType";
 
 import { auth as authFirebase } from "../firebase/config";
 
@@ -20,9 +21,9 @@ export function useAuth() {
         const { email, password } = auth;
         try {
             await createUserWithEmailAndPassword(authFirebase, email, password);
-      
+
         } catch (error: any) {
-     
+
             throw new Error(error.message || "Error desconocido");
         }
     };
@@ -36,7 +37,7 @@ export function useAuth() {
         }
     };
 
-    const loginWhitGoogle = async() => {
+    const loginWhitGoogle = async () => {
         const googleProvider = new GoogleAuthProvider();
         try {
             await signInWithPopup(authFirebase, googleProvider);
@@ -52,7 +53,7 @@ export function useAuth() {
 
     useEffect(() => {
 
-        const unsubcribe = onAuthStateChanged(authFirebase, (CurretUser) =>{
+        const unsubcribe = onAuthStateChanged(authFirebase, (CurretUser) => {
             setUser(CurretUser);
             setLoading(false);
         })
