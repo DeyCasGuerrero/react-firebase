@@ -4,11 +4,14 @@ import SocialLinks from "../common/SocialLinks";
 import { useCrudFireBase } from "../../hooks/useCrud";
 import { LinkTypes } from "../../types/LinkTypes";
 import LoaderComponent from './loader/Loader';
+import { useAuthContext } from '../../Context/AuthContext';
+import Button from '../common/Button';
 
 const PageUser = () => {
     const params = useParams();
     const uidUser = params.uidUser;
     const { fetchLinksByUid } = useCrudFireBase();
+    const { user } = useAuthContext();
     const [links, setLinks] = useState<LinkTypes[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -30,9 +33,23 @@ const PageUser = () => {
 
     }, [uidUser]);
 
+    const copyLink = async () => {
+        const linkBrowser = window.location.href;
+        try {
+            await navigator.clipboard.writeText(linkBrowser);
+        } catch (error) {
+            console.error('Error al copiar el link:', error);
+        }
+    }
+
     return (
         <main>
-            <h1 className="bg-white text-black font-pixel text-3xl">HOLA A LA PAGINA DE USUARIO DE REDES XDDD</h1>
+            <h1 className="bg-black text-white font-pixel text-3xl text-center p-2 rounded-lg">Bienvenidos a mi Lista de Redes </h1>
+            <div>
+                {user && (
+                    <Button text='Copy Link' bgColor='bg-green-500' onClick={copyLink} />
+                )}
+            </div>
             {isLoading ? (
                 <LoaderComponent></LoaderComponent>
             ) : (
@@ -41,7 +58,9 @@ const PageUser = () => {
                         <SocialLinks key={link.id} link={link} />
                     ))
                 ) : (
-                    <p className="text-white">No hay enlaces disponibles.</p>
+                    <div className='bg-black w-full mt-4 rounded-lg p-4'>
+                        <p className="text-white text-center text-xl font-pixel">No hay Links Cards en este usuario</p>
+                    </div>
                 )
             )}
         </main>

@@ -5,11 +5,11 @@ import { collection, doc, addDoc, onSnapshot, deleteDoc, getDocs } from "firebas
 import { useState, useEffect } from 'react';
 import { useAuthContext } from '../Context/AuthContext';
 
+
 export function useCrudFireBase() {
 
     const [success, setSuccess] = useState<boolean>(false);
     const [links, setLinks] = useState<LinkTypes[]>([]);
-
     const { user } = useAuthContext();
 
     const addOrEditLink = async (values: LinkTypes) => {
@@ -43,6 +43,7 @@ export function useCrudFireBase() {
                         name: data.name,
                         description: data.description,
                         urlImagen: data.urlImagen,
+
                     };
                     docs.push(link);
                 });
@@ -91,6 +92,7 @@ export function useCrudFireBase() {
         }
     };
 
+
     useEffect(() => {
         if (user) {
             getLinks();
@@ -103,6 +105,6 @@ export function useCrudFireBase() {
         setSuccess,
         links,
         onDeleteLink,
-        fetchLinksByUid, // Añadir la función aquí
+        fetchLinksByUid, 
     };
 }

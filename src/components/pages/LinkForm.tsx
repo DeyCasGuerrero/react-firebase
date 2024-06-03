@@ -16,6 +16,7 @@ const LinkForm = () => {
     }
 
     const { handleSumit, handleInputChange, values, handleFileChange, file } = useGetValues();
+
     return (
         <div className="flex flex-col items-center w-full ">
             <h1 className="text-white text-6xl text-center font-pixel mt-4">Agrega tus redes</h1>

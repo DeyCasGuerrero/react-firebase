@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { LinkTypes } from "../types/LinkTypes";
 import { useFiles } from '../hooks/useFiles';
 import { useCrudFireBase } from "./useCrud";
@@ -33,13 +33,13 @@ export function useGetValues() {
         }
     };
 
-
     const [values, setValues] = useState(initialStateValues);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value })
     }
+
 
     const handleSumit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -68,6 +68,6 @@ export function useGetValues() {
         handleInputChange,
         values,
         file,
-        handleFileChange,
+        handleFileChange,       
     }
 }

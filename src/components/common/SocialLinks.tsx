@@ -1,21 +1,40 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faX, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { useCrudFireBase } from "../../hooks/useCrud";
 import { LinkTypes } from "../../types/LinkTypes";
+import { useAuthContext } from "../../Context/AuthContext";
 
 const SocialLinks = ({ link }: { link: LinkTypes }) => {
-
+    const { user } = useAuthContext();
     const { onDeleteLink } = useCrudFireBase();
+
     return (
         <div className="bg-black rounded-2xl flex flex-col gap-2 text-white  font-pixel mt-8 p-8" key={link.id}>
-            <div className="flex justify-end">
-                <FontAwesomeIcon
-                    icon={faX}
-                    color="red"
-                    onClick={() => link && onDeleteLink(link.id)}
-                />
-            </div>
+            {user && (
+                <div className="flex justify-end gap-4">
+
+                    <div className="flex items-center bg-gre text-lg">
+                        eliminar
+                        <FontAwesomeIcon
+                            icon={faX}
+                            color="red"
+                            onClick={() => link && onDeleteLink(link.id)}
+                        />
+                    </div>
+
+                    <div className="flex items-center  text-lg">
+                        editar
+                        <FontAwesomeIcon
+                            icon={faPencil}
+                            color="green"
+                            
+                        />
+
+                    </div>
+
+                </div>
+            )}
 
             <div className=" flex items-center gap-4 ">
                 <div className="w-20 h-20">

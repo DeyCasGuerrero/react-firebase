@@ -18,7 +18,7 @@ const TextArea: React.FC<TextAreaProps> = ({ label, name, bgColor, row, placehol
             <div className="w-full max-w-md p-4 ">
                 <textarea
                     className="w-full h-32 bg-transparent text-white placeholder-gray-400 border border-gray-400
-                        rounded-md py-2 px-4 focus:outline-none focus:ring focus:ring-gray-300"
+                        rounded-md py-2 px-4 focus:outline-none focus:ring focus:ring-gray-300 text-xl"
                     placeholder={TxtAreaAttributes.placeholder}
                     name={TxtAreaAttributes.name}
                     rows={TxtAreaAttributes.row}

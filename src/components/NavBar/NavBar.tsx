@@ -27,7 +27,7 @@ const NavBar = () => {
                     {user?.photoURL ? (
                         <img className='rounded-full w-20 h-20' src={user && user.photoURL ? user.photoURL : undefined} alt='perfil'></img>
                     ) : (
-                        <p>No foto</p>
+                        <img src="/src/assets/ListTask.jpg" alt="default" className='rounded-full w-20 h-20'/>
                     )}
 
                 </Link>
