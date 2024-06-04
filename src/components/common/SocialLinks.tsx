@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 import { useCrudFireBase } from "../../hooks/useCrud";
 import { LinkTypes } from "../../types/LinkTypes";
 import { useAuthContext } from "../../Context/AuthContext";
@@ -22,7 +22,7 @@ const SocialLinks = ({ link }: { link: LinkTypes }) => {
                         />
                     </div>
 
-                    <div className="flex items-center  text-lg">
+                    {/* <div className="flex items-center  text-lg">
                         editar
                         <FontAwesomeIcon
                             icon={faPencil}
@@ -30,7 +30,7 @@ const SocialLinks = ({ link }: { link: LinkTypes }) => {
                             
                         />
 
-                    </div>
+                    </div> */}
 
                 </div>
             )}
